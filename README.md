@@ -4,7 +4,7 @@ Projet de python A4 DIA par Maud Tissot, Henri Eloy et Aurélien Pouxviel -
 Online Shoppers Purchasing Intention Dataset
 Résumé : Sur les 12 330 sessions de l'ensemble de données, 84,5 % (10 422) étaient des échantillons de classe négative qui ne se terminaient pas par des achats, et le reste (1908) était des échantillons de classe positive se terminant par des achats.
 
-## But : Analyser les données, les transformer et prédire si oui ou non une session peut mener à un achat (variable 'Revenue' 0 ou 1)
+## But : Analyser les données, les transformer et prédire si oui ou non une session peut mener à un achat (variable 'Revenue' 0 ou 1) + faire une api
 
 # I - Data PreProcessing
 
@@ -34,7 +34,28 @@ Ces analyses ont confirmé l'impact, en plus de la corrélation, sur notre targe
 
 # III - Modelisation de l'intention d'achat : Machine Learning + Deep Learning
   ## Test de diffèrents modèles et interpretation
+
+Nous avons utilisés nos 8 variables les plus corrélées pour effectuer une succesion de modèles de machine learning (et deep learning plus tard).
+Dans un premier temps, nous avons split notre dataset en X et Y, avec Y la variable à prédire. Ensuite nous avons standardiser notre X, puis split en train et en test nos données.
+
+Chaque modèle que nous avons réalisé est hyperparamétré grâce à nos fonctions de gridsearch. Nous avons effectué en machine learning :
+  - KNN
+  - GAUSSIAN NAIVE BAYES
+  - SVM
+  - DECISION TREE
+  - LOGISTIC REGRESSION
+  - XGBOOST CLASSIFIER
+  - RANDOM FOREST CLASSIFIER
+
   ## Comparaison des modèles
+  
+Pour chaque modèle nous calculons sa précision, différents scores comme le F-1 score sue lequel nous nous basons, leurs matrices de confusion, et éventuellement des ROC curves et variable importance plot.
+Nous avons enfin un tableau final basé sur le F1 qui classe nos modèles.
+
   ## Deep Learning
+
+Nous avons réalisé 2 modèles de réseaux de neuronnes avec tensorflow et keras, un cas d'overfitting avec 30 variables de notre dataset et un meilleur sans overfitting avec moins de variable.
   
 # IV - Transformation du modèle en API
+
+Pour finir, nous avons implémenté notre code dans une api à laquelle nous donnons les 8 paramètres pour construire un modèle, ainsi que le choix d'un ou plusieurs modèles
